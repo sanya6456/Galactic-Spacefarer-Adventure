@@ -9,12 +9,14 @@
     "@cap-js/sqlite": "^2",
     "@types/node": "^25.5.0",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
     "start": "cds-serve",
     "dev": "cds watch",
-    "build": "tsc"
+    "build": "tsc",
+    "watch-spacefarer-ui": "cds watch --open spacefarerui/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "cds": {
     "requires": {
@@ -22,14 +24,24 @@
         "kind": "mocked",
         "users": {
           "admin": {
-            "roles": ["Admin"]
+            "roles": [
+              "Admin"
+            ]
           },
           "planetX": {
-            "roles": ["PlanetX"]
+            "roles": [
+              "PlanetX"
+            ]
           }
         }
       }
     }
   },
-  "private": true
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/spacefarer-ui"
+  ]
 }
