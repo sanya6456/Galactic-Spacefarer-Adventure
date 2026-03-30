@@ -16,5 +16,20 @@
     "dev": "cds watch",
     "build": "tsc"
   },
+  "cds": {
+    "requires": {
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "admin": {
+            "roles": ["Admin"]
+          },
+          "planetX": {
+            "roles": ["PlanetX"]
+          }
+        }
+      }
+    }
+  },
   "private": true
 }
