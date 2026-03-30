@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "source": "^/spacefarers/(.*)$",
+      "destination": "spacefarer_srv",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}

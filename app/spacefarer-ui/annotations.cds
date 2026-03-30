@@ -1,105 +1,21 @@
-using SpacefarerService as service from '../../srv/spacefarer.service';
-annotate service.Spacefarers with @(
-    UI.FieldGroup #GeneratedGroup : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
-            {
-                $Type : 'UI.DataField',
-                Label : 'name',
-                Value : name,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'originPlanet',
-                Value : originPlanet,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'stardustCollection',
-                Value : stardustCollection,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'wormholeSkill',
-                Value : wormholeSkill,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'spacesuitColor',
-                Value : spacesuitColor,
-            },
-        ],
-    },
-    UI.Facets : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            ID : 'GeneratedFacet1',
-            Label : 'General Information',
-            Target : '@UI.FieldGroup#GeneratedGroup',
-        },
+using { SpacefarerService } from '../../srv/spacefarer.service';
+
+annotate SpacefarerService.Spacefarers with @(
+    UI.LineItem: [
+        { Value: name, Label: 'Name' },
+        { Value: originPlanet, Label: 'Planet' },
+        { Value: stardustCollection, Label: 'Stardust' },
+        { Value: spacesuitColor, Label: 'Suit Color' }
     ],
-    UI.LineItem : [
-        {
-            $Type : 'UI.DataField',
-            Label : 'name',
-            Value : name,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'originPlanet',
-            Value : originPlanet,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'stardustCollection',
-            Value : stardustCollection,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'wormholeSkill',
-            Value : wormholeSkill,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'spacesuitColor',
-            Value : spacesuitColor,
-        },
+    UI.SelectionFields: [
+        name,
+        originPlanet,
+        spacesuitColor
     ],
-);
-
-annotate service.Spacefarers with {
-    department @Common.ValueList : {
-        $Type : 'Common.ValueListType',
-        CollectionPath : 'Departments',
-        Parameters : [
-            {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : department_ID,
-                ValueListProperty : 'ID',
-            },
-            {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'name',
-            },
-        ],
+    UI.HeaderInfo: {
+        TypeName: 'Spacefarer',
+        TypeNamePlural: 'Spacefarers',
+        Title: { Value: name },
+        Description: { Value: originPlanet }
     }
-};
-
-annotate service.Spacefarers with {
-    position @Common.ValueList : {
-        $Type : 'Common.ValueListType',
-        CollectionPath : 'Positions',
-        Parameters : [
-            {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : position_ID,
-                ValueListProperty : 'ID',
-            },
-            {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'title',
-            },
-        ],
-    }
-};
-
+)

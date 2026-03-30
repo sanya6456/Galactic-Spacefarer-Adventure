@@ -9,5 +9,5 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["srv/**/*.ts"]
+  "include": ["./srv/**/*.ts"]
 }

@@ -1,0 +1,9 @@
+---
+applications:
+  - name: spacefarer-app
+    memory: 256M
+    path: srv/target
+    buildpacks:
+      - nodejs_buildpack
+    services:
+      - spacefarer-xsuaa

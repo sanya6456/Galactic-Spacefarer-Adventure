@@ -1,0 +1,31 @@
+{
+  "xsappname": "spacefarer-app",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Read",
+      "description": "Read access"
+    },
+    {
+      "name": "$XSAPPNAME.Write",
+      "description": "Write access"
+    }
+  ],
+  "roles": [
+    {
+      "name": "Admin",
+      "description": "Administrator role",
+      "scopes": [
+        "$XSAPPNAME.Read",
+        "$XSAPPNAME.Write"
+      ]
+    },
+    {
+      "name": "User",
+      "description": "Normal user",
+      "scopes": [
+        "$XSAPPNAME.Read"
+      ]
+    }
+  ]
+}

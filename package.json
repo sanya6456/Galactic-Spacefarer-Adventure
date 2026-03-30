@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
-    "@sap/cds": "^9"
+    "@sap/cds": "^9",
+    "@sap/xsenv": "^6.1.0",
+    "@sap/xssec": "^4.13.0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
     "@types/node": "^25.5.0",
+    "cds-plugin-ui5": "^0.13.0",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.2",
-    "cds-plugin-ui5": "^0.13.0"
+    "typescript": "^6.0.2"
   },
   "scripts": {
     "start": "cds-serve",
@@ -18,30 +20,21 @@
     "build": "tsc",
     "watch-spacefarer-ui": "cds watch --open spacefarerui/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
-  "cds": {
-    "requires": {
-      "auth": {
-        "kind": "mocked",
-        "users": {
-          "admin": {
-            "roles": [
-              "Admin"
-            ]
-          },
-          "planetX": {
-            "roles": [
-              "PlanetX"
-            ]
-          }
-        }
-      }
-    }
-  },
   "private": true,
   "workspaces": [
     "app/*"
   ],
   "sapux": [
     "app/spacefarer-ui"
-  ]
+  ],
+  "cds": {
+    "requires": {
+      "auth": {
+        "kind": "xsuaa"
+      },
+      "db": {
+        "kind": "sql"
+      }
+    }
+  }
 }

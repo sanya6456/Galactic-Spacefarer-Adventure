@@ -16,6 +16,13 @@
       "toolsId": "2704f5bf-a745-484d-a956-db11727f9569"
     },
     "dataSources": {
+      "spacefarer_srv": {
+        "uri": "/spacefarers/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.01"
+        }
+      },
       "mainService": {
         "uri": "/odata/v4/spacefarer/",
         "type": "OData",
