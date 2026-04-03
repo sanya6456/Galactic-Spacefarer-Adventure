@@ -4,6 +4,9 @@ specVersion: "4.0"
 metadata:
   name: spacefarerui
 type: application
+customConfiguration:
+  cds-plugin-ui5:
+    mountPath: /spacefarer-ui
 server:
   customMiddleware:
     - name: fiori-tools-proxy

@@ -2,8 +2,11 @@
 applications:
   - name: spacefarer-app
     memory: 256M
-    path: srv/target
+    path: .
     buildpacks:
       - nodejs_buildpack
+    command: npm start
+    env:
+      NODE_ENV: production
     services:
       - spacefarer-xsuaa

@@ -3,29 +3,33 @@
   "tenant-mode": "dedicated",
   "scopes": [
     {
-      "name": "$XSAPPNAME.Read",
-      "description": "Read access"
+      "name": "$XSAPPNAME.Admin",
+      "description": "Full read and write access to all spacefarers"
     },
     {
-      "name": "$XSAPPNAME.Write",
-      "description": "Write access"
+      "name": "$XSAPPNAME.User",
+      "description": "Read access to all spacefarers"
+    },
+    {
+      "name": "$XSAPPNAME.PlanetX",
+      "description": "Read access restricted to PlanetX spacefarers"
     }
   ],
-  "roles": [
+  "role-templates": [
     {
       "name": "Admin",
-      "description": "Administrator role",
-      "scopes": [
-        "$XSAPPNAME.Read",
-        "$XSAPPNAME.Write"
-      ]
+      "description": "Administrator — full read/write",
+      "scope-references": ["$XSAPPNAME.Admin"]
     },
     {
       "name": "User",
-      "description": "Normal user",
-      "scopes": [
-        "$XSAPPNAME.Read"
-      ]
+      "description": "Standard user — read all",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "PlanetX",
+      "description": "Planet X resident — read own planet only",
+      "scope-references": ["$XSAPPNAME.PlanetX"]
     }
   ]
 }

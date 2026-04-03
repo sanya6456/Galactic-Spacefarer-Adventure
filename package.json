@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
+    "@cap-js/hana": "^2.7.0",
     "@sap/cds": "^9",
     "@sap/xsenv": "^6.1.0",
-    "@sap/xssec": "^4.13.0"
+    "@sap/xssec": "^4.13.0",
+    "nodemailer": "^8.0.4"
   },
   "devDependencies": {
+    "@cap-js/cds-types": "^0.16.0",
     "@cap-js/sqlite": "^2",
     "@types/node": "^25.5.0",
+    "@types/nodemailer": "^7.0.11",
     "cds-plugin-ui5": "^0.13.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.2"
   },
   "scripts": {
@@ -30,10 +35,40 @@
   "cds": {
     "requires": {
       "auth": {
-        "kind": "xsuaa"
+        "[development]": {
+          "kind": "mocked",
+          "users": {
+            "alice": {
+              "roles": [
+                "Admin"
+              ]
+            },
+            "bob": {
+              "roles": [
+                "PlanetX"
+              ]
+            },
+            "carol": {
+              "roles": [
+                "User"
+              ]
+            }
+          }
+        },
+        "[production]": {
+          "kind": "xsuaa"
+        }
       },
       "db": {
-        "kind": "sql"
+        "[development]": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": "db.sqlite"
+          }
+        },
+        "[production]": {
+          "kind": "hana"
+        }
       }
     }
   }
